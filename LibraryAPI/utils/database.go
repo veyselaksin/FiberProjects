@@ -1,9 +1,9 @@
 package utils
 
 import (
-	"github.com/jinzhu/gorm"
-	"github.com/jinzhu/gorm/dialects/sqlite"
+	"gorm.io/gorm"
 )
 
-gorm
-sqlite
+var (
+	DBConn *gorm.DB
+)
