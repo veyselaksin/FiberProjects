@@ -1,14 +1,6 @@
 version: "3.7"
 
 services:
-    libraryapi:
-        build: ./LibraryAPI/.
-        env_file: .env
-        ports:
-            - "3000:3000"
-        volumes:
-            - ./LibraryAPI:/app
-
     postgresdb:
         image: postgres:14
         restart: always
@@ -17,6 +9,22 @@ services:
             - 5432:5432
         volumes:
             - postgresdb-data:/var/lib/postgresql/data
+
+    libraryapi:
+        build: ./LibraryAPI/.
+        env_file: .env
+        ports:
+            - "82:3000"
+        volumes:
+            - ./LibraryAPI:/app
+
+    kwinapi:
+        build: ./kwinAPI/.
+        env_file: .env
+        ports:
+            - "82:3000"
+        volumes:
+            - ./kwinAPI:/app
 
 volumes:
     postgresdb-data:
